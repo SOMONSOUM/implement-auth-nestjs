@@ -30,6 +30,14 @@ type LoginResponse {
   error: Int!
   message: String!
   accessToken: String
+  refreshToken: String
+}
+
+type RefreshTokenResponse {
+  error: Int
+  message: String
+  accessToken: String
+  refreshToken: String
 }
 
 type Query {
@@ -40,6 +48,7 @@ type Query {
 type Mutation {
   createUser(input: CreateUserInput!): CreateUserResponse!
   login(input: LoginInput!): LoginResponse!
+  refreshToken(input: RefreshTokenInput!): RefreshTokenResponse!
 }
 
 input CreateUserInput {
@@ -50,4 +59,8 @@ input CreateUserInput {
 input LoginInput {
   email: String!
   password: String!
+}
+
+input RefreshTokenInput {
+  refreshToken: String!
 }
